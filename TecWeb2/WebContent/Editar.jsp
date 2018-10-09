@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="br.edu.insper.*,java.util.*,java.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page import="mvc.*,java.util.*,java.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +22,7 @@
 
 </head>
 <body class="yellow lighten-5">
-<jsp:useBean id="dao" class="br.edu.insper.DAO"/>
+<jsp:useBean id="dao" class="mvc.model.DAO"/>
 
 <!-- Barra de Navegacao -->
 <nav>

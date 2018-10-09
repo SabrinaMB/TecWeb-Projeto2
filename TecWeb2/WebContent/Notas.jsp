@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="br.edu.insper.*,java.util.*,java.*" %>
+<%@ page import="mvc.*,java.util.*,java.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
@@ -14,11 +14,11 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-        
+       
 <link rel="stylesheet" href="style.css">
 
 <body class="orange lighten-5">
-<jsp:useBean id="dao" class="br.edu.insper.DAO"/>
+<jsp:useBean id="dao" class="mvc.model.DAO"/>
 
 <!-- Barra de Navegacao -->
 <nav>
