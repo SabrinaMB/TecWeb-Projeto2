@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-@WebServlet("/cria")
+@WebServlet("/crianun")
 public class Cria extends HttpServlet {
 	
 	@Override
@@ -31,7 +31,7 @@ public class Cria extends HttpServlet {
 	out.println("</form>");
 	out.println("<body><html>");
 	}
-	
+	 
 	@Override
 	 protected void doPost(HttpServletRequest request,
 			 				HttpServletResponse response)

@@ -11,28 +11,32 @@ public class NotasController {
 		System.out.println("Lógica do MVC");
 		return "Notas";
 	}
+	@RequestMapping("entrarNota")
+	public String form() {
+		return "Notas.jsp";
+	}
 	@RequestMapping("adicionarNota")
 	public String adiciona(Notas nota) {
 		DAO dao = new DAO();
 		dao.adiciona(nota);
-		return "Notas";
+		return "Notas.jsp";
 	}
 	@RequestMapping("deletarNota")
 	public String remove(Notas nota) {
 		DAO dao = new DAO();
-		dao.adiciona(nota);
-		return "Notas";
+		dao.remove();
+		return "Notas.jsp";
 	}
 	@RequestMapping("editarCor")
 	public String alteraCor(Cores cor) {
 		DAO dao = new DAO();
 		dao.adicionaCor(cor);
-		return "Notas";
+		return "Notas.jsp";
 	}
 	@RequestMapping("editarNota")
 	public String altera(Notas nota) {
 		DAO dao = new DAO();
 		dao.adiciona(nota);
-		return "Editar";
+		return "Editar.jsp";
 	}
 }

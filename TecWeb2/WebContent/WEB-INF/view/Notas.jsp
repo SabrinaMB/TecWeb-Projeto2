@@ -14,7 +14,9 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-       
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="<c:url value="resources/script/metodos.js"/>"></script>
+    
 <link rel="stylesheet" href="style.css">
 
 <body class="orange lighten-5">
@@ -23,13 +25,11 @@
 <!-- Barra de Navegacao -->
 <nav>
   <div class="nav-wrapper orange">
-    <a href="#" >&nbsp;<img src="logoNoteNome.png" class="logo"></a>
+    <a href="#" >&nbsp;<img src="<c:url value="resources/img/logoNoteNome.png"/>" class="logo"></a>
 
   </div>
 </nav>
-        
-
-  
+     
 <!-- !PAGE CONTENT! -->
 <div class="w3-main w3-content w3-padding class3">
 

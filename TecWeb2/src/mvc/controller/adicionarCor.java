@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class adicionarCor
  */
-@WebServlet("/adicionarCor")
+@WebServlet("/adicionarCorbuiuj")
 public class adicionarCor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

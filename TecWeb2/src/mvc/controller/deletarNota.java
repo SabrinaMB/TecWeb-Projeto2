@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class adicionarNota
  */
-@WebServlet("/deletarNota")
+@WebServlet("/deletarNotamknj")
 public class deletarNota extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
