@@ -48,8 +48,8 @@
             <div class="input-field col s12">
               <textarea id="nota" name="nota" class="materialize-textarea"></textarea>
               <label for="nota">Nota</label>
-            </div>            
-         	<input type="color" value="${cor.cor}" name="cor" id = "cor">
+            </div> 
+         	<input type="color" value="${cor.cor}" name="cor" id ="cor">
             <button class="btn waves-effect waves-light orange darken-3
             " type="submit">Submit</button>
           </form>
@@ -93,7 +93,7 @@
 		         	<input id="id" name="id" type="number" value="${nota.id}" style="display:none">
 		         	<button class="btn waves-effect waves-light material-icons orange" type="submit">delete</button>
 		         </form>
-		         <form action="Editar.jsp">
+		         <form action="editarNota">
 		         	<input id="id" name="id" type="number" value="${nota.id}" style="display:none">
 		         	<input id="titulo" name="titulo" type="text" value="${nota.titulo}" style="display:none">
 		         	<input id="nota" name="nota" type="text" value="${nota.nota}" style="display:none">

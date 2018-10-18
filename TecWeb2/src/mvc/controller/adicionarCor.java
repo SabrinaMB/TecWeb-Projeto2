@@ -37,6 +37,9 @@ public class adicionarCor extends HttpServlet {
     	DAO dao = new DAO();
     	
     	String nova_cor = request.getParameter("cor");
+    	if (nova_cor == null) {
+    		nova_cor = ("#000000");
+    	}	
     	String nota_id = request.getParameter("nota_id");
     	Cores cor = new Cores();
     	cor.setCor(nova_cor);

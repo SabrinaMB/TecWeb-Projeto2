@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Nome da Página</title>
+<title>dada</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -39,7 +39,7 @@
      <div class="col s12">
        <div class="card darken-1" style = "background-color:<%=cor%>">
         <div class="card-content blue-text">
-          <form action="editarNota" method="post">
+          <form action="editarNota2" method="post">
             <div class="input-field col s12">
             	<%String titulo = request.getParameter("titulo");%>
             	<%String nota = request.getParameter("nota");%>

@@ -1,10 +1,12 @@
-{
-	"tweets": [
-		{
-			"content" : "hello"
-		},
-		{
-			"content" : "world"
-		}
-	]
-}
+[
+	{
+		"id" : "70",
+		"titulo" : "",
+		"nota" : ""
+	},
+	{
+		"id" : "72",
+		"titulo" : "",
+		"nota" : ""
+	}
+]

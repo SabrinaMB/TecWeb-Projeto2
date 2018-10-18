@@ -13,14 +13,9 @@ public class Notas {
 	public void setTitulo(String titulo) {this.titulo = titulo;}
 	
 	public String getNota() {return this.nota;}
-	
 	public void setNota(String nota) {this.nota = nota;}
 	
-	public String getCor() {
-		return cor;
-	}
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
+	public String getCor() {return cor;}
+	public void setCor(String cor) {this.cor = cor;}
 
 }

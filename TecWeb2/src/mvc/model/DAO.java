@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.google.gson.GsonBuilder;
+
 
 public class DAO {
 	
@@ -51,7 +55,9 @@ public class DAO {
 				
 				notas.add(nota);
 			}
-			
+			String json = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().
+                    create().toJson(notas);
+			System.out.println(json);
 			rs.close();
 			stmt.close();
 		} catch (SQLException e) {
@@ -61,34 +67,38 @@ public class DAO {
 		
 		return notas;
 	}
-	public void altera(Notas nota) {
+	
+	public void altera(String titulo, String nota, int id, String cor) {
 		try {
 			String sql = "UPDATE Notas SET " +
 					"titulo=?, nota=? WHERE id=?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, nota.getTitulo());
-			stmt.setString(2, nota.getNota());
-			stmt.setInt(3, nota.getId());
+			stmt.setString(1, titulo);
+			stmt.setString(2, nota);
+			stmt.setInt(3, id);
 			stmt.execute();
 			stmt.close();
+			alteraCor(cor, id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public void adiciona(Notas nota) {
+	public void adiciona(String titulo, String nota, String cor) {
 		try {
 			String sql = "INSERT INTO Notas" +
 			"(titulo,nota) values(?,?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1,nota.getTitulo());
-			stmt.setString(2,nota.getNota());
+			stmt.setString(1,titulo);
+			stmt.setString(2,nota);
 			stmt.execute();
 			stmt.close();
+			adicionaCor(cor, getId1());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	public void remove(Integer id) {
 		try {
@@ -103,7 +113,7 @@ public class DAO {
 		}
 	}
 	
-public int getId1() {
+	public int getId1() {
 		
 		int id = 0;
 		
@@ -161,7 +171,7 @@ public int getId1() {
 		
 		return cores;
 	}
-public String getCor1(Integer id) {
+	public String getCor1(Integer id) {
 		
 		String cor = new String();
 		
@@ -185,16 +195,15 @@ public String getCor1(Integer id) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return cor;
 	}
-	public void alteraCor(Cores cor) {
+	public void alteraCor(String cor, int id) {
 		try {
 			String sql = "UPDATE cor SET " +
 					"cor=? WHERE nota_id=?";
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, cor.getCor());
-			stmt.setInt(2, cor.getIdNota());
+			stmt.setString(1, cor);
+			stmt.setInt(2, id);
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -202,13 +211,16 @@ public String getCor1(Integer id) {
 			e.printStackTrace();
 		}
 	}
-	public void adicionaCor(Cores cor) {
+	public void adicionaCor(String cor, Integer id) {
 		try {
+			if (cor == null) {
+				cor = "#000000";
+			}
 			String sql = "INSERT INTO cor" +
 			"(nota_id,cor) values(?,?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setInt(1,cor.getIdNota());
-			stmt.setString(2,cor.getCor());
+			stmt.setInt(1,id);
+			stmt.setString(2,cor);
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {

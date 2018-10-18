@@ -9,7 +9,7 @@ public class Cores {
 	public void setId(Integer id) {this.id = id;}
 	
 	public Integer getIdNota() {return this.nota_id;}
-	public void setIdNota(Integer nota_id2) {this.nota_id = nota_id2;}
+	public void setIdNota(Integer nota_id) {this.nota_id = nota_id;}
 	
 	public String getCor() {return this.cor;}
 	public void setCor(String cor) {this.cor = cor;}

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.GsonBuilder;
+
 @SuppressWarnings("serial")
 @WebServlet("/lista")
 public class Lista extends HttpServlet {
@@ -39,4 +41,5 @@ public class Lista extends HttpServlet {
 		}
 	
 	 }
+	
 }
