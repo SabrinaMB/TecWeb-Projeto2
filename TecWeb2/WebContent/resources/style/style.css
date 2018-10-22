@@ -32,4 +32,8 @@ li:hover > ul {
   z-index:2;
 }
 
+# myDIV{
+	display: none;
+}
+
 

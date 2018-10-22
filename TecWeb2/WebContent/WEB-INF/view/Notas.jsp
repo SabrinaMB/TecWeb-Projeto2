@@ -159,8 +159,11 @@ body {
 												<span id="resp4"></span>
 												</label>
 											</p>
-											
-											<button
+												<p id="myDIV" display = "none">
+												  resposta
+												</p>
+																							
+											<button onclick="myFunction()"
 									class="btn waves-effect waves-light orange darken-3" type="button">answer</button>
 										
 										</form>
@@ -204,16 +207,22 @@ body {
 					$("#category").text(category);
 					$("#question").text(question);
 					$("#resp1").text(correct_answer);
+					$("#myDIV").text(correct_answer);
 					$("#resp2").text(incorrect_answers[0]);
 					$("#resp3").text(incorrect_answers[1]);
 					$("#resp4").text(incorrect_answers[2]);
-					$("#resp1").value(correct_answer);
-					$("#resp2").value(incorrect_answers[0]);
-					$("#resp3").value(incorrect_answers[1]);
-					$("#resp4").value(incorrect_answers[2]);
 					console.log(question);
 					console.log(correct_answer);
 
+				}
+				
+				function myFunction() {
+				    var x = document.getElementById("myDIV");
+				    if (x.style.display === "none") {
+				        x.style.display = "block";
+				    } else {
+				        x.style.display = "none";
+				    }
 				}
 			</script>
 
@@ -281,7 +290,6 @@ body {
 				</div>
 			</c:forEach>
 		</div>
-	</div>
 
 
 </body>
