@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
-<title>📈 My title</title>
+<title>📈Infinity Note</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -138,28 +138,30 @@ body {
 									<p id="question"
 										style="display: inline !important; font-size: 15px;">Pergunta
 										não encontrada</p>
-										<form action="#">
-										<p id="resp1">vai porra</p>
-											<p id="resp1">
+										<form action="">
 											
-												<label id="resp1"> <input id="resp1" type="radio" value="" />
-													<span id="resp1">Red</span>
+												<label> <input name="group1" type="radio" value="" />
+													<span id="resp1"></span>
+												</label>
+												
+											<p>
+												<label> <input name="group1" type="radio" value=""  />
+													<span id="resp2"></span>
 												</label>
 											</p>
 											<p>
-												<label> <input id="resp2" type="radio" value=""  />
-													<span id="resp2">Red</span>
+												<label> <input name="group1" type="radio" value=""  />
+													<span id="resp3"></span>
 												</label>
 											</p>
 											<p>
-												<label> <input id="resp3" type="radio" value=""  />
-													<span id="resp3">Red</span>
+												<label> <input name="group1" type="radio" value=""  /> 
+												<span id="resp4"></span>
 												</label>
 											</p>
-											<p>
-												<label> <input id="resp4" type="radio" value=""  /> <span id="resp4">Yellow</span>
-												</label>
-											</p>
+											
+											<button
+									class="btn waves-effect waves-light orange darken-3" type="button">answer</button>
 										
 										</form>
 
