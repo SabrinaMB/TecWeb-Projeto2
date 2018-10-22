@@ -11,7 +11,7 @@
  http://www.springframework.org/schema/context/spring-context.xsd">
  <context:component-scan base-package="mvc" />
  <mvc:annotation-driven />
- <mvc:resources location="/Resources/" mapping="/Resources/**"></mvc:resources>
+ <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
  <mvc:default-servlet-handler/>
  <bean
 class="org.springframework.web.servlet.view.InternalResourceViewResolver">

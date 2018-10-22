@@ -1,23 +1,11 @@
-window.onload = function() {
-	
-	var http = new XMLHttpRequest();
-
-
-	router.route('/nota/:id?')
-	  .get(nota.get)
-	  .post(nota.post)
-	  .put(nota.put)
-	  .delete(nota.delete);
-	
-
-	
-	http.onreadystatechange = function(){
-		console.log(http);
-		console.log("test");
-		
-	};
-	
-	http.open("GET", "http://localhost:8080/TecWeb2/nota/:id?", true);
-	http.send();
-	
-};
+$('.dropdown-button').dropdown({
+    inDuration: 300,
+    outDuration: 225,
+    constrain_width: false, // Does not change width of dropdown to that of the activator
+    hover: true, // Activate on hover
+    gutter: 0, // Spacing from edge
+    belowOrigin: false, // Displays dropdown below the button
+    alignment: 'left' // Displays dropdown with edge aligned to the left of button
+  }
+);
+     

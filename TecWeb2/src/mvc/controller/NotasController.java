@@ -17,9 +17,9 @@ public class NotasController {
 		return "Notas";
 	}
 	@RequestMapping("adicionarNota")
-	public String adiciona(@RequestParam(value = "titulo") String titulo, @RequestParam(value = "nota") String nota, @RequestParam(value = "cor") String cor) {
+	public String adiciona(@RequestParam(value = "titulo") String titulo, @RequestParam(value = "nota") String nota, @RequestParam(value = "cor") String cor, @RequestParam(value = "cor") String font) {
 		DAO dao = new DAO();
-		dao.adiciona(titulo, nota, cor);
+		dao.adiciona(titulo, nota, cor, font);
 		return "Notas";
 	}
 	@RequestMapping("deletarNota")
@@ -44,6 +44,12 @@ public class NotasController {
 	public String getLista(Cores cor) {
 		DAO dao = new DAO();
 		dao.getLista();
+		return "Notas";
+	}
+	@RequestMapping("alteraFont")
+	public String alteraFont(@RequestParam(value = "nota_id") Integer id, @RequestParam(value = "font") String font) {
+		DAO dao = new DAO();
+		dao.alteraFont(font, id);
 		return "Notas";
 	}
 	@RequestMapping("editarNota")

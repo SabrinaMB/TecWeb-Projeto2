@@ -1,0 +1,35 @@
+.align{
+	display: inline-block;
+}
+ul {
+  width: 150px;
+  font-size: 20px;
+}
+ul li {
+  position: relative;
+}
+li ul {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  display: none;
+}
+ul li a {
+  display: block;
+  text-style: none;
+  font-family: Nunito;
+  color: #000000 !important;
+  text-decoration: none;
+  background: #fff;
+  padding: 5px;
+}
+ul li ul li{
+  font-size: 10px;
+  text-decoration:none; 
+}
+li:hover > ul {
+  display: block;
+  z-index:2;
+}
+
+

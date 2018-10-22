@@ -1,4 +1,6 @@
 package mvc.model;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -32,7 +34,7 @@ public class DAO {
 			System.out.println("Não rolou o try1 SQL");
 		}
 	}
-	public List<Notas> getLista() {
+	public List<Notas> getLista(){
 		
 		List<Notas> notas = new ArrayList<Notas>();
 		
@@ -57,6 +59,15 @@ public class DAO {
 			}
 			String json = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().
                     create().toJson(notas);
+		try {
+			FileWriter file = new FileWriter("/Users/sabrinamachado/Documents/4o.\\ Semestre/TecWeb/TecWeb-Projeto2/TecWeb/WebContent/resources/script/info.json");
+			file.write(json);
+			System.out.println("deu certo");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 			System.out.println(json);
 			rs.close();
 			stmt.close();
@@ -84,13 +95,15 @@ public class DAO {
 			e.printStackTrace();
 		}
 	}
-	public void adiciona(String titulo, String nota, String cor) {
+	public void adiciona(String titulo, String nota, String cor, String font) {
 		try {
+			
 			String sql = "INSERT INTO Notas" +
-			"(titulo,nota) values(?,?)";
+			"(titulo,nota,font) values(?,?,?)";
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1,titulo);
 			stmt.setString(2,nota);
+			stmt.setString(3,font);
 			stmt.execute();
 			stmt.close();
 			adicionaCor(cor, getId1());
@@ -197,6 +210,32 @@ public class DAO {
 		}
 		return cor;
 	}
+	public String getFont(Integer id) {
+		
+		String fonte = new String();
+		
+		try {
+			PreparedStatement stmt = connection.
+					prepareStatement("SELECT font FROM notas WHERE id = ?");
+			stmt.setLong(1,id);
+			stmt.execute();
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				Fontes font = new Fontes();
+				font.setFont(rs.getString("font"));
+				fonte = font.getFont();
+				
+			}
+			
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return fonte;
+	}
 	public void alteraCor(String cor, int id) {
 		try {
 			String sql = "UPDATE cor SET " +
@@ -239,7 +278,46 @@ public class DAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}	
+	}
+	public void alteraFont(String font, int id) {
+		try {
+			if(font == null) {
+				font = "Nunito";
+			}
+			String sql = "UPDATE Notas SET " +
+					"font=? WHERE id=?";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, font);
+			stmt.setInt(2, id);
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+public String getFont1(Integer id) {
+		
+		String font = new String();
+		
+		try {
+			PreparedStatement stmt = connection.
+					prepareStatement("SELECT font FROM notas WHERE id = ?");
+			stmt.setLong(1,id);
+			stmt.execute();
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				font = rs.getString("font");
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return font;
+	}
 
 }
 
