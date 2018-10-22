@@ -161,11 +161,14 @@ body {
 										</p>
 										<p id="myDIV" style="display: none">resposta</p>
 
-										<button onclick="comparar()"
+										<button onclick="myFunction()"
 											class="btn waves-effect waves-light orange darken-3"
 											type="button">answer</button>
 
 									</form>
+									<input class="btn waves-effect waves-light orange darken-3"
+										type="button" value="New Question"
+										onClick="window.location.reload()">
 
 								</div>
 							</div>
@@ -235,15 +238,6 @@ body {
 				} else {
 					x.style.display = "none";
 				}
-			}
-			function comparar() {
-				if ($("input[type='radio'].radioBtnClass").is(':checked')) {
-					var card_type = $(
-							"input[type='radio'].radioBtnClass:checked").val();
-					alert(card_type);
-					console.log(card_type);
-				}
-
 			}
 		</script>
 
