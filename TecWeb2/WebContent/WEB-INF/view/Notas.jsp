@@ -56,7 +56,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript"
 	src="<c:url value="resources/script/metodos.js"/>"></script>
 <link rel="stylesheet" href="resources/style/style.css">
@@ -98,8 +99,7 @@ body {
 									<label for="nota">Nota</label>
 								</div>
 								<div class="input-field col s12">
-									<select
-										style="display: inline !important; font-size: 20px;"
+									<select style="display: inline !important; font-size: 20px;"
 										name="font" id="font">
 										<option data-value="">Escolha uma fonte</option>
 										<option data-value="Karma">Karma</option>
@@ -119,38 +119,101 @@ body {
 									class="btn waves-effect waves-light orange darken-3
             "
 									type="submit">Submit</button>
+
 							</form>
+
 						</div>
 					</div>
 				</div>
 			</div>
 			<div>
-				<div id="map"
-					style="width: 500px; height: 300px; background: yellow"></div>
-				<script>
-					function myMap() {
-						var myLatLng = {
-							lat : -23.598476,
-							lng : -46.676665
-						};
-						var mapOptions = {
-							center : myLatLng,
-							zoom : 17,
-						}
-						var map = new google.maps.Map(document
-								.getElementById('map'), mapOptions);
-						var marker = new google.maps.Marker({
-							position : myLatLng,
-							map : map,
-							title : 'Hello World'
-						});
-					}
-				</script>
-				<script async defer
-					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpRHia2xSZ-fspxwcHA5AwMbXUXZMveJc&callback=myMap"></script>
+
+				<div class="row">
+					<div class="col s12 ">
+						<div class="card hoverable">
+							<div class="card-content corcard">
+								<div class="card-action wrap">
+									<span class="card-title" id="category">Categoria errada
+										trivia não encontrada</span>
+									<p id="question"
+										style="display: inline !important; font-size: 15px;">Pergunta
+										não encontrada</p>
+										<form action="#">
+										<p id="resp1">vai porra</p>
+											<p id="resp1">
+											
+												<label id="resp1"> <input id="resp1" type="radio" value="" />
+													<span id="resp1">Red</span>
+												</label>
+											</p>
+											<p>
+												<label> <input id="resp2" type="radio" value=""  />
+													<span id="resp2">Red</span>
+												</label>
+											</p>
+											<p>
+												<label> <input id="resp3" type="radio" value=""  />
+													<span id="resp3">Red</span>
+												</label>
+											</p>
+											<p>
+												<label> <input id="resp4" type="radio" value=""  /> <span id="resp4">Yellow</span>
+												</label>
+											</p>
+										
+										</form>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 			</div>
 
+			<script>
+				$(document)
+						.ready(
+								function() {
+									$
+											.ajax({
+												type : "GET",
+												url : 'https://opentdb.com/api.php?amount=1&type=multiple',
+												contentType : 'application/x-www-form-urlencoded',
+												success : function(data,
+														status, xhr) {
+													console.log(data)
+													trivia(data);
+												},
+												error : function(xhr, status,
+														error) {
+													alert(error);
+												}
+											});
+								});
+
+				function trivia(data) {
+					var category = data.results[0].category;
+					var question = data.results[0].question;
+					var correct_answer = data.results[0].correct_answer;
+					var incorrect_answers = data.results[0].incorrect_answers;
+
+					$("#category").text(category);
+					$("#question").text(question);
+					$("#resp1").text(correct_answer);
+					$("#resp2").text(incorrect_answers[0]);
+					$("#resp3").text(incorrect_answers[1]);
+					$("#resp4").text(incorrect_answers[2]);
+					$("#resp1").value(correct_answer);
+					$("#resp2").value(incorrect_answers[0]);
+					$("#resp3").value(incorrect_answers[1]);
+					$("#resp4").value(incorrect_answers[2]);
+					console.log(question);
+					console.log(correct_answer);
+
+				}
+			</script>
 
 			<c:forEach var="nota" items="${dao.lista}" varStatus="id">
 				<div class="row">
