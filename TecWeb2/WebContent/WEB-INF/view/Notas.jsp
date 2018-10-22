@@ -98,8 +98,21 @@ body {
 									<label for="nota">Nota</label>
 								</div>
 								<div class="input-field col s12">
-									<textarea id="font" name="font" class="materialize-textarea"></textarea>
-									<label for="font">Fonte</label>
+									<select
+										style="display: inline !important; font-size: 20px;"
+										name="font" id="font">
+										<option data-value="">Escolha uma fonte</option>
+										<option data-value="Karma">Karma</option>
+										<option data-value="Tangerine">Tangerine</option>
+										<option data-value="Mali">Mali</option>
+										<option data-value="Rubik">Rubik</option>
+										<option data-value="Pacific">Pacific</option>
+										<option data-value="Quicksand">Quicksand</option>
+										<option data-value="Inconsolata">Inconsolata</option>
+										<option data-value="Cabin">Cabin</option>
+										<option data-value="VT323">VT323</option>
+										<option data-value="Nunito">Nunito</option>
+									</select>
 								</div>
 								<input type="color" value="${cor.cor}" name="cor" id="cor">
 								<button
@@ -164,7 +177,7 @@ body {
 											class="btn waves-effect waves-light material-icons orange align"
 											type="submit">delete</button>
 									</form>
-									<form action="editarNota" >
+									<form action="editarNota">
 										<input id="id" name="id" type="number" value="${nota.id}"
 											style="display: none"> <input id="titulo"
 											name="titulo" type="text" value="${nota.titulo}"
@@ -177,20 +190,23 @@ body {
 											type="submit">edit</button>
 									</form>
 									<form action='alteraFont'>
-											<input id="nota_id" name="nota_id" type="number"
-											value="${nota.id}" style="display: none">
-												<select style="display: inline !important; font-size:20px;" name="font" id="font">
-													<option data-value="Karma">Karma</option>
-													<option data-value="Tangerine">Tangerine</option>
-													<option data-value="Mali">Mali</option>
-													<option data-value="Rubik">Rubik</option>
-													<option data-value="Pacific">Pacific</option>
-													<option data-value="Quicksand">Quicksand</option>
-													<option data-value="Inconsolata">Inconsolata</option>
-													<option data-value="Cabin">Cabin</option>
-													<option data-value="VT323">VT323</option>
-													<option data-value="Nunito">Nunito</option>
-												</select><button class="btn waves-effect waves-light orange darken-3"
+										<input id="nota_id" name="nota_id" type="number"
+											value="${nota.id}" style="display: none"> <select
+											style="display: inline !important; font-size: 20px;"
+											name="font" id="font">
+											<option data-value="">Escolha uma fonte</option>
+											<option data-value="Karma">Karma</option>
+											<option data-value="Tangerine">Tangerine</option>
+											<option data-value="Mali">Mali</option>
+											<option data-value="Rubik">Rubik</option>
+											<option data-value="Pacific">Pacific</option>
+											<option data-value="Quicksand">Quicksand</option>
+											<option data-value="Inconsolata">Inconsolata</option>
+											<option data-value="Cabin">Cabin</option>
+											<option data-value="VT323">VT323</option>
+											<option data-value="Nunito">Nunito</option>
+										</select>
+										<button class="btn waves-effect waves-light orange darken-3"
 											type="submit">Submit Font</button>
 									</form>
 								</div>

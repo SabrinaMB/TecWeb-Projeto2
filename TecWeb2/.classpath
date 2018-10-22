@@ -28,8 +28,8 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/sabrinamachado/apache-tomcat-9.0.10/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="/Users/sabrinamachado/apache-tomcat-9.0.10/lib/jsp-api.jar"/>
-	<classpathentry kind="lib" path="/Users/sabrinamachado/eclipse-workspace/HandoutSpring/WebContent/WEB-INF/lib/maven-core-3.5.4.jar"/>
+	<classpathentry kind="lib" path="D:/insper/apache-tomcat-9.0.10/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="D:/insper/apache-tomcat-9.0.10/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="D:/apache-maven-3.5.4/lib/maven-core-3.5.4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
