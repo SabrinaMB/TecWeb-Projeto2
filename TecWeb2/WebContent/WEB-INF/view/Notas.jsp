@@ -138,158 +138,179 @@ body {
 									<p id="question"
 										style="display: inline !important; font-size: 15px;">Pergunta
 										não encontrada</p>
-										<form action="">
-											
-												<label> <input name="group1" type="radio" value="" />
-													<span id="resp1"></span>
-												</label>
-												
-											<p>
-												<label> <input name="group1" type="radio" value=""  />
-													<span id="resp2"></span>
-												</label>
-											</p>
-											<p>
-												<label> <input name="group1" type="radio" value=""  />
-													<span id="resp3"></span>
-												</label>
-											</p>
-											<p>
-												<label> <input name="group1" type="radio" value=""  /> 
-												<span id="resp4"></span>
-												</label>
-											</p>
-												<p id="myDIV" display = "none">
-												  resposta
-												</p>
-																							
-											<button onclick="myFunction()"
-									class="btn waves-effect waves-light orange darken-3" type="button">answer</button>
-										
-										</form>
+									<form id="botoes">
 
-									</div>
+										<label> <input name="group1" class="radioBtnClass"
+											type="radio" value="" /> <span id="resp1"></span>
+										</label>
+
+										<p>
+											<label> <input name="group1" class="radioBtnClass"
+												type="radio" value="" /> <span id="resp2"></span>
+											</label>
+										</p>
+										<p>
+											<label> <input name="group1" class="radioBtnClass"
+												type="radio" value="" /> <span id="resp3"></span>
+											</label>
+										</p>
+										<p>
+											<label> <input name="group1" class="radioBtnClass"
+												type="radio" value="" /> <span id="resp4"></span>
+											</label>
+										</p>
+										<p id="myDIV" style="display: none">resposta</p>
+
+										<button onclick="comparar()"
+											class="btn waves-effect waves-light orange darken-3"
+											type="button">answer</button>
+
+									</form>
+
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 
-			<script>
-				$(document)
-						.ready(
-								function() {
-									$
-											.ajax({
-												type : "GET",
-												url : 'https://opentdb.com/api.php?amount=1&type=multiple',
-												contentType : 'application/x-www-form-urlencoded',
-												success : function(data,
-														status, xhr) {
-													console.log(data)
-													trivia(data);
-												},
-												error : function(xhr, status,
-														error) {
-													alert(error);
-												}
-											});
-								});
+		</div>
 
-				function trivia(data) {
-					var category = data.results[0].category;
-					var question = data.results[0].question;
-					var correct_answer = data.results[0].correct_answer;
-					var incorrect_answers = data.results[0].incorrect_answers;
+		<script>
+			$(document).ready(function() {
+				$.ajax({
+					type : "GET",
+					url : 'https://opentdb.com/api.php?amount=1&type=multiple',
+					contentType : 'application/x-www-form-urlencoded',
+					success : function(data, status, xhr) {
+						console.log(data)
+						trivia(data);
+					},
+					error : function(xhr, status, error) {
+						alert(error);
+					}
+				});
+			});
 
-					$("#category").text(category);
-					$("#question").text(question);
-					$("#resp1").text(correct_answer);
-					$("#myDIV").text(correct_answer);
-					$("#resp2").text(incorrect_answers[0]);
-					$("#resp3").text(incorrect_answers[1]);
-					$("#resp4").text(incorrect_answers[2]);
-					console.log(question);
-					console.log(correct_answer);
+			function trivia(data) {
+				var category = data.results[0].category;
+				var question = data.results[0].question;
+				var correct_answer = data.results[0].correct_answer;
+				var incorrect_answers = data.results[0].incorrect_answers;
+				var answers = incorrect_answers;
+				answers.push(correct_answer);
+				console.log(answers);
+				var currentIndex = answers.length, temporaryValue, randomIndex;
+				// While there remain elements to shuffle...
+				while (0 !== currentIndex) {
 
+					// Pick a remaining element...
+					randomIndex = Math.floor(Math.random() * currentIndex);
+					currentIndex -= 1;
+
+					// And swap it with the current element.
+					temporaryValue = answers[currentIndex];
+					answers[currentIndex] = answers[randomIndex];
+					answers[randomIndex] = temporaryValue;
 				}
-				
-				function myFunction() {
-				    var x = document.getElementById("myDIV");
-				    if (x.style.display === "none") {
-				        x.style.display = "block";
-				    } else {
-				        x.style.display = "none";
-				    }
+
+				console.log(answers);
+
+				$("#category").text(category);
+				$("#question").text(question);
+				$("#resp1").text(answers[0]);
+				$("#resp2").text(answers[1]);
+				$("#resp3").text(answers[2]);
+				$("#resp4").text(answers[3]);
+				$("#myDIV").text(correct_answer);
+				console.log(question);
+				console.log(answers);
+
+			}
+
+			function myFunction() {
+				var x = document.getElementById("myDIV");
+				if (x.style.display === "none") {
+					x.style.display = "block";
+				} else {
+					x.style.display = "none";
 				}
-			</script>
+			}
+			function comparar() {
+				if ($("input[type='radio'].radioBtnClass").is(':checked')) {
+					var card_type = $(
+							"input[type='radio'].radioBtnClass:checked").val();
+					alert(card_type);
+					console.log(card_type);
+				}
 
-			<c:forEach var="nota" items="${dao.lista}" varStatus="id">
-				<div class="row">
-					<div class="col s12 ">
-						<div
-							style='background-color:${dao.getCor1(nota.id)}; font-family:${dao.getFont1(nota.id)};'
-							class="card hoverable">
-							<div class="card-content corcard">
-								<span class="card-title">${nota.titulo}</span>
-								<p>${nota.nota}</p>
+			}
+		</script>
 
-								<div class="card-action wrap">
-									<form action="editarCor">
-										<input id="nota_id" name="nota_id" type="number"
-											value="${nota.id}" style="display: none"> <input
-											type="color" value="${cor.cor}" name="cor" id="cor">
-										<button class="btn waves-effect waves-light orange darken-3"
-											type="submit">Submit Color</button>
-									</form>
-									<form action="deletarNota" method="post">
-										<input id="id" name="id" type="number" value="${nota.id}"
-											style="display: none">
-										<button
-											class="btn waves-effect waves-light material-icons orange align"
-											type="submit">delete</button>
-									</form>
-									<form action="editarNota">
-										<input id="id" name="id" type="number" value="${nota.id}"
-											style="display: none"> <input id="titulo"
-											name="titulo" type="text" value="${nota.titulo}"
-											style="display: none"> <input id="nota" name="nota"
-											type="text" value="${nota.nota}" style="display: none">
-										<input id="cor" name="cor" type="text"
-											value="${dao.getCor1(nota.id)}" style="display: none">
-										<button
-											class="btn waves-effect waves-light material-icons orange darken-3 align"
-											type="submit">edit</button>
-									</form>
-									<form action='alteraFont'>
-										<input id="nota_id" name="nota_id" type="number"
-											value="${nota.id}" style="display: none"> <select
-											style="display: inline !important; font-size: 20px;"
-											name="font" id="font">
-											<option data-value="">Escolha uma fonte</option>
-											<option data-value="Karma">Karma</option>
-											<option data-value="Tangerine">Tangerine</option>
-											<option data-value="Mali">Mali</option>
-											<option data-value="Rubik">Rubik</option>
-											<option data-value="Pacific">Pacific</option>
-											<option data-value="Quicksand">Quicksand</option>
-											<option data-value="Inconsolata">Inconsolata</option>
-											<option data-value="Cabin">Cabin</option>
-											<option data-value="VT323">VT323</option>
-											<option data-value="Nunito">Nunito</option>
-										</select>
-										<button class="btn waves-effect waves-light orange darken-3"
-											type="submit">Submit Font</button>
-									</form>
-								</div>
+		<c:forEach var="nota" items="${dao.lista}" varStatus="id">
+			<div class="row">
+				<div class="col s12 ">
+					<div
+						style='background-color:${dao.getCor1(nota.id)}; font-family:${dao.getFont1(nota.id)};'
+						class="card hoverable">
+						<div class="card-content corcard">
+							<span class="card-title">${nota.titulo}</span>
+							<p>${nota.nota}</p>
+
+							<div class="card-action wrap">
+								<form action="editarCor">
+									<input id="nota_id" name="nota_id" type="number"
+										value="${nota.id}" style="display: none"> <input
+										type="color" value="${cor.cor}" name="cor" id="cor">
+									<button class="btn waves-effect waves-light orange darken-3"
+										type="submit">Submit Color</button>
+								</form>
+								<form action="deletarNota" method="post">
+									<input id="id" name="id" type="number" value="${nota.id}"
+										style="display: none">
+									<button
+										class="btn waves-effect waves-light material-icons orange align"
+										type="submit">delete</button>
+								</form>
+								<form action="editarNota">
+									<input id="id" name="id" type="number" value="${nota.id}"
+										style="display: none"> <input id="titulo"
+										name="titulo" type="text" value="${nota.titulo}"
+										style="display: none"> <input id="nota" name="nota"
+										type="text" value="${nota.nota}" style="display: none">
+									<input id="cor" name="cor" type="text"
+										value="${dao.getCor1(nota.id)}" style="display: none">
+									<button
+										class="btn waves-effect waves-light material-icons orange darken-3 align"
+										type="submit">edit</button>
+								</form>
+								<form action='alteraFont'>
+									<input id="nota_id" name="nota_id" type="number"
+										value="${nota.id}" style="display: none"> <select
+										style="display: inline !important; font-size: 20px;"
+										name="font" id="font">
+										<option data-value="">Escolha uma fonte</option>
+										<option data-value="Karma">Karma</option>
+										<option data-value="Tangerine">Tangerine</option>
+										<option data-value="Mali">Mali</option>
+										<option data-value="Rubik">Rubik</option>
+										<option data-value="Pacific">Pacific</option>
+										<option data-value="Quicksand">Quicksand</option>
+										<option data-value="Inconsolata">Inconsolata</option>
+										<option data-value="Cabin">Cabin</option>
+										<option data-value="VT323">VT323</option>
+										<option data-value="Nunito">Nunito</option>
+									</select>
+									<button class="btn waves-effect waves-light orange darken-3"
+										type="submit">Submit Font</button>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-			</c:forEach>
-		</div>
+			</div>
+		</c:forEach>
+	</div>
 
 
 </body>
