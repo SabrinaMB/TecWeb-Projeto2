@@ -164,7 +164,7 @@ body {
 											class="btn waves-effect waves-light material-icons orange align"
 											type="submit">delete</button>
 									</form>
-									<form action="editarNota">
+									<form action="editarNota" >
 										<input id="id" name="id" type="number" value="${nota.id}"
 											style="display: none"> <input id="titulo"
 											name="titulo" type="text" value="${nota.titulo}"
@@ -177,28 +177,21 @@ body {
 											type="submit">edit</button>
 									</form>
 									<form action='alteraFont'>
-										<!-- MUDAR!!!!!!!!!!!!!!!!!!!!!!!! -->
-										<input id="nota_id" name="nota_id" type="number"
-											value="${nota.id}" style="display: none"> <input
-											type="text" name="font" id="font">
-										<button class="btn waves-effect waves-light orange darken-3"
+											<input id="nota_id" name="nota_id" type="number"
+											value="${nota.id}" style="display: none">
+												<select style="display: inline !important; font-size:20px;" name="font" id="font">
+													<option data-value="Karma">Karma</option>
+													<option data-value="Tangerine">Tangerine</option>
+													<option data-value="Mali">Mali</option>
+													<option data-value="Rubik">Rubik</option>
+													<option data-value="Pacific">Pacific</option>
+													<option data-value="Quicksand">Quicksand</option>
+													<option data-value="Inconsolata">Inconsolata</option>
+													<option data-value="Cabin">Cabin</option>
+													<option data-value="VT323">VT323</option>
+													<option data-value="Nunito">Nunito</option>
+												</select><button class="btn waves-effect waves-light orange darken-3"
 											type="submit">Submit Font</button>
-										<!-- <ul id="left" class='column'>
-											<li><a href="#">Fontes:</a>
-												<ul>
-													<li data-value="Karma"><a href="#!">Karma</a></li>
-													<li data-value="Tangerine"><a href="#!">Tangerine</a></li>
-													<li data-value="Mali"><a href="#!">Mali</a></li>
-													<li data-value="Rubik"><a href="#!">Rubik</a></li>
-													<li data-value="Karma"><a href="#!">Pacifico</a></li>
-													<li data-value="Karma"><a href="#!">Quicksand</a></li>
-													<li data-value="Karma"><a href="#!">Inconsolata</a></li>
-													<li data-value="Karma"><a href="#!">Cabin</a></li>
-													<li data-value="Karma"><a href="#!">VT323</a></li>
-													<li data-value="Karma"><a href="#!">Nunito</a></li>
-
-												</ul></li>
-										</ul>  -->
 									</form>
 								</div>
 							</div>
