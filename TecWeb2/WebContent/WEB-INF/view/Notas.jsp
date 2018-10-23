@@ -140,23 +140,23 @@ body {
 										não encontrada</p>
 									<form id="botoes">
 
-										<label> <input name="group1" class="radioBtnClass"
-											type="radio" value="" /> <span id="resp1"></span>
+										<label> <input name="group1" id="1"
+											class="radioBtnClass" type="radio" /> <span id="resp1"></span>
 										</label>
 
 										<p>
-											<label> <input name="group1" class="radioBtnClass"
-												type="radio" value="" /> <span id="resp2"></span>
+											<label> <input name="group1" id="2"
+												class="radioBtnClass" type="radio" /> <span id="resp2"></span>
 											</label>
 										</p>
 										<p>
-											<label> <input name="group1" class="radioBtnClass"
-												type="radio" value="" /> <span id="resp3"></span>
+											<label> <input name="group1" id="3"
+												class="radioBtnClass" type="radio" /> <span id="resp3"></span>
 											</label>
 										</p>
 										<p>
-											<label> <input name="group1" class="radioBtnClass"
-												type="radio" value="" /> <span id="resp4"></span>
+											<label> <input name="group1" id="4"
+												class="radioBtnClass" type="radio" /> <span id="resp4"></span>
 											</label>
 										</p>
 										<p id="myDIV" style="display: none">resposta</p>
@@ -166,10 +166,10 @@ body {
 											type="button">answer</button>
 
 									</form>
-									<input class="btn waves-effect waves-light orange darken-3"
-										type="button" value="New Question"
-										onClick="window.location.reload()">
-
+									<form action="entrarNota">
+										<input class="btn waves-effect waves-light orange darken-3"
+											type="submit" value="New Question">
+									</form>
 								</div>
 							</div>
 						</div>
@@ -180,17 +180,20 @@ body {
 		</div>
 
 		<script>
+			var correct;
 			$(document).ready(function() {
 				$.ajax({
+					
 					type : "GET",
 					url : 'https://opentdb.com/api.php?amount=1&type=multiple',
 					contentType : 'application/x-www-form-urlencoded',
 					success : function(data, status, xhr) {
-						console.log(data)
+						correct = data.results[0].correct_answer;
+						console.log(data);
 						trivia(data);
 					},
 					error : function(xhr, status, error) {
-						alert(error);
+						alert("error");
 					}
 				});
 			});
@@ -226,18 +229,22 @@ body {
 				$("#resp3").text(answers[2]);
 				$("#resp4").text(answers[3]);
 				$("#myDIV").text(correct_answer);
+				$("#1").attr("value", answers[0])
+				$("#2").attr("value", answers[1])
+				$("#3").attr("value", answers[2])
+				$("#4").attr("value", answers[3])
 				console.log(question);
 				console.log(answers);
 
 			}
-
 			function myFunction() {
-				var x = document.getElementById("myDIV");
-				if (x.style.display === "none") {
-					x.style.display = "block";
-				} else {
-					x.style.display = "none";
+				var answer = document.querySelector('input[name = "group1"]:checked').value;
+				if (answer == correct){
+					alert("correto!!!")
+				}else{
+					alert("errado, o correto seria: " + correct)
 				}
+				
 			}
 		</script>
 
